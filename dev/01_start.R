@@ -15,12 +15,12 @@
 ## Add meta data about your application
 golem::fill_desc(
   pkg_name = "InC", # The Name of the package containing the App 
-  pkg_title = "PKG_TITLE", # The Title of the package containing the App 
-  pkg_description = "PKG_DESC.", # The Description of the package containing the App 
-  author_first_name = "AUTHOR_FIRST", # Your First Name
-  author_last_name = "AUTHOR_LAST", # Your Last Name
-  author_email = "AUTHOR@MAIL.COM", # Your Email
-  repo_url = NULL # The URL of the GitHub Repo (optional) 
+  pkg_title = "Emission Inventory calculation tool based on EMEP 2019", # The Title of the package containing the App 
+  pkg_description = "Emission Inventory calculation tool based on EMEP 2019.", # The Description of the package containing the App 
+  author_first_name = "Anwar", # Your First Name
+  author_last_name = "Al Shami", # Your Last Name
+  author_email = "anwar.g.alshami@gmail.com", # Your Email
+  repo_url = "https://github.com/anwaralshami/_InC" # The URL of the GitHub Repo (optional) 
 )     
 
 ## Set {golem} options ----
@@ -28,30 +28,30 @@ golem::set_golem_options()
 
 ## Create Common Files ----
 ## See ?usethis for more information
-usethis::use_mit_license( name = "Golem User" )  # You can set another license here
-usethis::use_readme_rmd( open = FALSE )
-usethis::use_code_of_conduct()
-usethis::use_lifecycle_badge( "Experimental" )
-usethis::use_news_md( open = FALSE )
+usethis::use_mit_license( name = "Anwar Al Shami" )  # You can set another license here
+#usethis::use_readme_rmd( open = FALSE )
+#usethis::use_code_of_conduct()
+#usethis::use_lifecycle_badge( "Experimental" )
+#usethis::use_news_md( open = FALSE )
 
 ## Use git ----
 usethis::use_git()
 
 ## Init Testing Infrastructure ----
 ## Create a template for tests
-golem::use_recommended_tests()
+#golem::use_recommended_tests()
 
 ## Use Recommended Packages ----
-golem::use_recommended_deps()
+#golem::use_recommended_deps()
 
 ## Favicon ----
 # If you want to change the favicon (default is golem's one)
-golem::remove_favicon()
-golem::use_favicon() # path = "path/to/ico". Can be an online file. 
+#golem::remove_favicon()
+#golem::use_favicon() # path = "path/to/ico". Can be an online file. 
 
 ## Add helper functions ----
-golem::use_utils_ui()
-golem::use_utils_server()
+#golem::use_utils_ui()
+#golem::use_utils_server()
 
 # You're now set! ----
 

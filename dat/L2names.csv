@@ -1,0 +1,24 @@
+L1,L2,L2name
+1,A,Combustion
+1,B,Fugitive emissions from fuels
+2,A,Mineral products
+2,B,Chemical industry
+2,C,Metal production
+2,D,Other solvent and product use A
+2,G,Other solvent and product use B
+2,H,Other industry production
+2,I,Wood processing
+2,J,Production of POPs
+2,K,Consumption of POPs and heavy metals
+2,L,Other production consumption storage transportation or handling of bulk products
+3,B,Manure management
+3,D,Crop production and agricultural soils
+5,A,Solid waste disposal on land
+5,B,Composting and anaerobic digestion
+5,C,Waste incineration
+5,D,Wastewater handling
+5,E,Other waste
+6,A,Other sources
+11,A,Volcanoes
+11,B,Forest fires
+11,C,Other natural sources 
