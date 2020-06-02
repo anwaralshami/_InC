@@ -35,7 +35,7 @@ usethis::use_mit_license( name = "Anwar Al Shami" )  # You can set another licen
 #usethis::use_news_md( open = FALSE )
 
 ## Use git ----
-usethis::use_git()
+#usethis::use_git()
 
 ## Init Testing Infrastructure ----
 ## Create a template for tests
@@ -56,5 +56,5 @@ usethis::use_git()
 # You're now set! ----
 
 # go to dev/02_dev.R
-rstudioapi::navigateToFile( "dev/02_dev.R" )
+#rstudioapi::navigateToFile( "dev/02_dev.R" )
 

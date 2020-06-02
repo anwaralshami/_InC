@@ -1,3 +1,5 @@
+
+#remotes::install_git("https://github.com/shinyTree/shinyTree",quiet = T,)
 library(shinyTree)
 
 treeToJSON <- function(tree, keepRoot = FALSE, topLevelSlots = c("default", "all"),createNewId = TRUE,pretty = FALSE) {
