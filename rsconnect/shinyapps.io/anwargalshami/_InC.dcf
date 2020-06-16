@@ -1,0 +1,13 @@
+name: _InC
+title: _InC
+username:
+account: anwargalshami
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 2028484
+bundleId: 3011838
+url: https://anwargalshami.shinyapps.io/_InC/
+when: 1586873001.54918
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: ui_modal.R|ui_modal_dash.R|ui_old.R|www/lego_head_small.png

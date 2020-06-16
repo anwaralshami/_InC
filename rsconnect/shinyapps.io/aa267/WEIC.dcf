@@ -1,0 +1,13 @@
+name: WEIC
+title: WEIC
+username:
+account: aa267
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 1983695
+bundleId: 2914680
+url: https://aa267.shinyapps.io/WEIC/
+when: 1584994572.72749
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: ui_modal.R|ui_modal_dash.R|ui_old.R
