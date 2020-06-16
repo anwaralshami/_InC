@@ -1,0 +1,25 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1592295511310.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "132995754",
+    "id" : "1AA82A42",
+    "lastKnownWriteTime" : 1592295807,
+    "last_content_update" : 1592295807653,
+    "path" : "~/git/InC/server.R",
+    "project_path" : "server.R",
+    "properties" : {
+        "cursorPosition" : "30,20",
+        "scrollLine" : "22"
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_source"
+}

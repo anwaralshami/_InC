@@ -1,0 +1,33 @@
+{
+    "collab_server" : "",
+    "contents" : "",
+    "created" : 1592295626546.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "17AB39D9",
+    "lastKnownWriteTime" : 4981608057381284211,
+    "last_content_update" : 1592295626546,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "cacheKey" : "59F5A960",
+        "caption" : "EFs2",
+        "contentUrl" : "grid_resource/gridviewer.html?env=&obj=EFs2&cache_key=59F5A960",
+        "displayedObservations" : 10263,
+        "environment" : "",
+        "expression" : "EFs2",
+        "object" : "EFs2",
+        "preview" : 0,
+        "totalObservations" : 10263,
+        "variables" : 22
+    },
+    "read_only" : false,
+    "read_only_alternatives" : [
+    ],
+    "relative_order" : 4,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_dataframe"
+}

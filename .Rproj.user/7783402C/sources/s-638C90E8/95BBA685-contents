@@ -1,6 +1,6 @@
 library(dplyr)
 library(shinyTree)
-library(shinydashboard)
+#library(shinydashboard)
 #library(DT)
 library(shinyBS)
 #library(dashboardthemes)
@@ -8,25 +8,21 @@ library(shinyBS)
 country <- read.csv("dat/country")
 
 
-
-shinyUI(fluidPage(theme = "style.css",
+fluidPage(theme = "style.css",
                   div(style = "padding: 1px 0px; width: '100%'",
                       titlePanel(
                           title = "",
-                          windowTitle = "EI Tool"
+                          windowTitle = "Inventory Calculator"
                       )
                   ),
                   navbarPage(
                       
                       # Application title.
-                      title = div(span(img(src = "lego_head_small.png"),
-                                       "EI Tool",
-                                       style = "position: relative; top: 50%; transform: translateY(-50%);")),
-                      
+                      title = "InC",
                       # EI Calculator
                       tabPanel(
                           
-                          "EI Calculator",
+                          "Calculator",
                           
                           tabsetPanel(
                               
@@ -35,20 +31,20 @@ shinyUI(fluidPage(theme = "style.css",
                               # Circle-packing plot of ethnicity and gender.
                               tabPanel(
                                   
-                                  "Upload Input File",
+                                  "Activity Input Data",
                                   
                                   # Sidebar panel for controls.
                                   sidebarPanel(
-                                      actionButton("clickdiv", h5("Generate a new Activity Input File")),
-                                      fileInput("activityData", h4(" Or "),
+                                      actionButton("clickdiv", "Generate a new Activity Input File",width = "100%"),
+                                      fileInput("activityData", h4(" Or "),buttonLabel = "Browse for",
                                                 multiple = FALSE,placeholder = "filled Activity Input File",
                                                 accept = c("text/csv",
                                                            "text/comma-separated-values,text/plain",
                                                            ".csv"),
-                                                ),
+                                                )#,
                                       
                           
-                                      tags$p(span("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas laoreet elit ut justo commodo, nec vehicula nulla tincidunt. Aenean congue odio non dolor congue, id pulvinar sapien fringilla. Fusce ac ligula eget dolor bibendum aliquet at eu libero.", style = "color:red"))
+                                      #tags$p(span("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas laoreet elit ut justo commodo, nec vehicula nulla tincidunt. Aenean congue odio non dolor congue, id pulvinar sapien fringilla. Fusce ac ligula eget dolor bibendum aliquet at eu libero.", style = "color:red"))
                                       ),
                                   
                                   # Main panel with plot.
@@ -69,7 +65,7 @@ shinyUI(fluidPage(theme = "style.css",
                                                   # Sidebar panel for controls.
                                                   sidebarPanel(
                                                     selectInput("continent", "Continent",
-                                                                unique(country$Continent)),
+                                                                unique(country$Continent),selected = "Asia"),
                                                     
                                                     uiOutput("country"),
                                                     sliderInput("range", label = "Inventory years", min = 1990, 
@@ -106,9 +102,9 @@ shinyUI(fluidPage(theme = "style.css",
                                                     tags$p(HTML("The tree will require a few seconds to load")),
                                                     tags$p(HTML("It is layered as follows:")),
                                                     tags$ul(
-                                                      tags$li(HTML("L1")),
+                                                      tags$li(HTML("Source sector")),
                                                       tags$li(HTML("Emission factor Tier")),
-                                                      tags$li(HTML("L2")),
+                                                      tags$li(HTML("Source sub-sector")),
                                                       tags$li(HTML("Sector")),
                                                       tags$li(HTML("Technology")),
                                                       tags$li(HTML("Fuel")),
@@ -128,7 +124,7 @@ shinyUI(fluidPage(theme = "style.css",
                                                 # Table for finding sets with pieces of particular ethnicity/gender.
                                                 tabPanel(
                                                   
-                                                  "Dowwnload Input File",
+                                                  "Download Input File",
                                                   
                                                   # Sidebar panel for controls.
                                                   sidebarPanel(
@@ -158,7 +154,7 @@ shinyUI(fluidPage(theme = "style.css",
                               # SUmmary
                               tabPanel(
                                   
-                                  "Summarize Across Pollutants",
+                                  "Summaries Across Pollutants",
                                   
                                   # Sidebar panel for controls.
                                   sidebarPanel(
@@ -181,7 +177,7 @@ shinyUI(fluidPage(theme = "style.css",
                               # SUmmary 2
                               tabPanel(
                                   
-                                  "Summarize By Pollutant",
+                                  "Summaries By Pollutant",
                                   
                                   # Sidebar panel for controls.
                                   sidebarPanel(
@@ -202,20 +198,20 @@ shinyUI(fluidPage(theme = "style.css",
                               
                               # Table for finding sets with pieces of particular ethnicity/gender.
                               tabPanel(
-                                  
-                                  "Dowwnload Output File",
-                                  
+
+                                  "Download Output File",
+
                                   # Sidebar panel for controls.
                                   sidebarPanel(
                                       downloadButton("downloadOutput", "Computed Emissions")
-                                      
+
                                   ),
-                                  
+
                                   # Main panel with table.
                                   mainPanel(
                                       #dataTableOutput("demographicsSets")
                                   )
-                                  
+
                               )
                               
                           )
@@ -233,11 +229,8 @@ shinyUI(fluidPage(theme = "style.css",
                               
                               # General info.
                               tabPanel(
-                                  "Overview"#,
-                                  # tags$h1("Scope"),
-                                  # tags$p(HTML("This collection of visualizations addresses the question, \"What is it like to live in the Lego world?\"  In other words, if you're Wyldstyle, what kinds of people do you meet?  How are they feeling?  What plants and animals do you find around you?")),
-                                  # tags$p(HTML("Think of each theme as an island on the Lego planet.  Each visualization can be faceted by theme, so you can compare fashion, flora and fauna, etc. across themes.")),
-                                  # tags$h1("Approach"),
+                                  "Overview",
+                                  uiOutput('pdfView2')
                                   # tags$p(HTML("Parts are labeled and categorized using three main sources of information:")),
                                   # tags$ul(
                                   #     tags$li(HTML("The part category (e.g., \"Minifig Heads\" or \"Plants and Animals\") specified in the database")),
@@ -251,40 +244,33 @@ shinyUI(fluidPage(theme = "style.css",
                               
                               # Credits.
                               tabPanel(
-                                  "Credits"#,
-                                  # tags$h1("Datasets"),
-                                  # tags$p(HTML("All Lego data comes from the files made available by <a href=\"https://rebrickable.com/downloads/\">Rebrickable</a>.  The app checks for new data about once a week.")),
-                                  # tags$p(HTML("Phylogenetic trees are inferred from hypernym relations in the <a href=\"https://wordnet.princeton.edu/\">WordNet</a> database, using the files provided by <a href=\"http://wordnetport.sourceforge.net/\">WordNetPort</a>.")),
-                                  # tags$p(HTML("Basic lemmatization uses the list in the <a href=\"https://github.com/trinker/lexicon\">lexicon</a> package.")),
-                                  # tags$h1("R Packages"),
-                                  # tags$p(HTML("<a href=\"http://shiny.rstudio.com/\">Shiny</a> and the <a href=\"https://www.tidyverse.org/\">tidyverse</a>, of course.")),
-                                  # tags$p(HTML("Position and size of the circles in the demographics circle-packing graphs are calculated using <a href=\"https://github.com/thomasp85/ggraph\">ggraph</a>.")),
-                                  # tags$p(HTML("<a href=\"https://igraph.org/r/\">igraph</a> is used to model the hierarchical relationships in the circle-packing graphs, and to construct phylogenetic trees from the graph of WordNet hypernym relationships.")),
-                                  # tags$p(HTML("Treemaps, polar charts, and bar charts are rendered with <a href=\"https://www.highcharts.com/\">Highcharts</a>, via <a href=\"http://jkunst.com/highcharter/\">Highcharter</a>.")),
-                                  # tags$p(HTML("Phylogenetic trees are rendered with <a href=\"https://datastorm-open.github.io/visNetwork/\">visNetwork</a>.")),
-                                  # tags$p(HTML("Tables are rendered with <a href=\"https://datatables.net/\">DataTables</a>, using the <a href=\"https://rstudio.github.io/DT/\">DT</a> package.")),
-                                  # tags$p(HTML("Joins with regular expressions are facilitated by <a href=\"https://github.com/dgrtwo/fuzzyjoin\">fuzzyjoin</a>.")),
-                                  # tags$p(HTML("<a href=\"https://github.com/statsmaths/cleanNLP\">cleanNLP</a> and <a href=\"https://cran.r-project.org/web/packages/wordnet/index.html\">wordnet</a> aren't used in the app, but were helpful in exploratory data analysis</a>."))
-                              ),
-                              
-                              # Other visualizations.
-                              tabPanel(
-                                  "Other visualizations"#,
-                                  # tags$p(HTML("")),
-                                  # tags$p(HTML("<a href=\"https://shiny.rstudio.com/gallery/lego-set.html\">LEGO set visualizer</a> (Shiny app)")),
-                                  # tags$p(HTML("<a href=\"https://www.kaggle.com/devisangeetha/lego-let-s-play\">LEGO - Let's play</a> (parts, colors, sets, and themes)")),
-                                  # tags$p(HTML("<a href=\"https://mode.com/blog/lego-data-analysis\">67 years of Lego sets</a>")),
-                                  # tags$p(HTML("<a href=\"https://flowingdata.com/2015/10/19/evolving-lego-color-palette/\">Evolving LEGO color palette</a>")),
-                                  # tags$p(HTML("<a href=\"https://nateaff.com/2017/09/11/lego-topic-models/\">LEGO color themes as topic models</a>")),
-                                  # tags$p(HTML("<a href=\"https://www.wired.com/2012/01/the-mathematics-of-lego/\">The mathematics of Lego</a> (set size and the power law)")),
-                                  # tags$p(HTML("<a href=\"http://www.bartneck.de/2010/12/17/taxonomy-for-lego-minifigures/\">Taxonomy for LEGO Minifigures</a>")),
-                                  # tags$p(HTML("<a href=\"https://www.kaggle.com/martinellis/prominence-of-special-parts-over-time-visualised\">Prominence of special parts over time, visualised</a>")),
-                                  # tags$p(HTML("<a href=\"https://therealityprose.wordpress.com/2013/01/17/what_happened_with_lego/\">What happened with LEGO</a> (Lego set price over time)")),
-                                  # tags$p(HTML("Various other projects on <a href=\"https://www.kaggle.com/rtatman/lego-database/kernels\">Kaggle</a>"))
+                                  "Credits",
+                                  tags$h2("Datasets and Packages used"),
+                                  HTML("<h4>Emission factors and abatement efficiencies are compiled from the 2019 
+                                       the <a href=\"https://www.eea.europa.eu/publications/emep-eea-guidebook-2019\">joint EMEP/EEA air pollutant 
+                                       emission inventory guidebook</a>. This app has been developped using <a href=\"http://shiny.rstudio.com/\">shiny</a> and the <a href=\"https://www.tidyverse.org/\">tidyverse</a>.</h4>"),
+                                  
+                                  tags$h2("Developed at the AUB Nature Conservation Center"),
+                                  HTML("<h4>The AUB Nature Conservation Center (AUB-NCC) is the only transdisciplinary academic center addressing nature conservation in the MENA region. We leverage the expertise and experience of AUB faculties, 
+                                       research staff, and volunteers to tackle the region's most pressing environmental challenges.</h4>"),
+                                  
+                                  tags$h2("Developed and maintained by"),
+                                  HTML("<h4>Anwar Al Shami</h4>"),
+                                  HTML("<h4><a href = \"mailto: anwar.g.alshami@gmail.com\">anwar.g.alshami@gmail.com</a></h4>")
+                                  
+                                  #HTML("<a href=\"http://shiny.rstudio.com/\">shiny</a> and the <a href=\"https://www.tidyverse.org/\">tidyverse</a>, of course.")
+                                  # tags$p(html("position and size of the circles in the demographics circle-packing graphs are calculated using <a href=\"https://github.com/thomasp85/ggraph\">ggraph</a>.")),
+                                  # tags$p(html("<a href=\"https://igraph.org/r/\">igraph</a> is used to model the hierarchical relationships in the circle-packing graphs, and to construct phylogenetic trees from the graph of wordnet hypernym relationships.")),
+                                  # tags$p(html("treemaps, polar charts, and bar charts are rendered with <a href=\"https://www.highcharts.com/\">highcharts</a>, via <a href=\"http://jkunst.com/highcharter/\">highcharter</a>.")),
+                                  # tags$p(html("phylogenetic trees are rendered with <a href=\"https://datastorm-open.github.io/visnetwork/\">visnetwork</a>.")),
+                                  # tags$p(html("tables are rendered with <a href=\"https://datatables.net/\">datatables</a>, using the <a href=\"https://rstudio.github.io/dt/\">dt</a> package.")),
+                                  # tags$p(html("joins with regular expressions are facilitated by <a href=\"https://github.com/dgrtwo/fuzzyjoin\">fuzzyjoin</a>.")),
+                                  # tags$p(html("<a href=\"https://github.com/statsmaths/cleanNLP\">cleanNLP</a> and <a href=\"https://cran.r-project.org/web/packages/wordnet/index.html\">wordnet</a> aren't used in the app, but were helpful in exploratory data analysis</a>."))
                               )
                               
                           )
                           
                       )
                       
-                  )))
+                  )
+          )
