@@ -163,7 +163,7 @@ function(input, output, session) {
         },
         content = function(file) {
             write.csv(emissionValues()%>%
-                          select(NFR,Sector,Table,Type,Technology,Fuel,Abatement,Region,Pollutant,Value,Unit,emissionUnit,X2018,X2019,Reference)%>%
+                          select(-activityUNitdesc,-activityMultiplier,-activityUnit,-emissionUNitdesc,-emissionMultiplier)%>%
                           rename(EFvalue = Value, EFunit = Unit)
             , file, row.names = FALSE)
         }
